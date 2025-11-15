@@ -1,6 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import miLogo from '../assets/muni.jpg';
+import miLogo from '../assets/Claro.ss.jpeg';
 import {
   LayoutDashboard,
   Users,
@@ -20,10 +20,11 @@ export const AdminLayout = () => {
 
   const navigation = [
     { name: 'Dashboard', href: '/admin/dashboard', icon: LayoutDashboard },
-    { name: 'Practicantes', href: '/admin/practicantes', icon: Users },
+    { name: 'Trabajadores', href: '/admin/practicantes', icon: Users },
     { name: 'Asistencias', href: '/admin/asistencias', icon: ClipboardList },
     { name: 'Reportes', href: '/admin/reportes', icon: BarChart3 },
     { name: 'Administradores', href: '/admin/administradores', icon: UserCircle },
+
   ];
 
   return (
@@ -40,7 +41,7 @@ export const AdminLayout = () => {
                   alt="Logo MPP"
                   className="w-12 h-12" // Usamos las mismas clases de tamaño que el icono
                 />
-                <span className="ml-8 font-bold text-gray-900">MPP</span>
+                <span className="ml-8 font-bold text-gray-1200">Claro-Peru</span>
               </div>
               <button onClick={() => setSidebarOpen(false)}>
                 <X className="w-6 h-6" />
@@ -78,7 +79,7 @@ export const AdminLayout = () => {
                 alt="Logo MPP"
                 className="w-12 h-12" // Usamos las mismas clases de tamaño que el icono
               />
-              <span className="ml-8 font-bold text-2xl text-gray-900">MPP</span>
+              <span className="ml-8 font-bold text-2xl text-gray-800">Claro-Peru</span>
             </div>
           <nav className="flex-1 px-4 py-4 space-y-1 overflow-y-auto">
             {navigation.map((item) => (
@@ -134,7 +135,7 @@ export const AdminLayout = () => {
                 alt="Logo MPP"
                 className="w-12 h-12" // Usamos las mismas clases de tamaño que el icono
               />
-              <span className="ml-8 font-bold text-gray-900">MPP</span>
+              <span className="ml-8 font-bold text-gray-900">Claro-peru</span>
             </div>
         </div>
 

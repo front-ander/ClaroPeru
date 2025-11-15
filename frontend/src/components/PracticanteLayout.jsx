@@ -1,7 +1,7 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { QrCode, User, History, LogOut, Building2 } from 'lucide-react';
-import miLogo from '../assets/muni.jpg';
+import miLogo from '../assets/Claro.ss.jpeg';
 
 export const PracticanteLayout = () => {
   const { user, logout } = useAuth();
@@ -26,7 +26,7 @@ export const PracticanteLayout = () => {
                    />
               <div>
                 <h1 className="text-lg font-bold text-gray-900">Sistema de Asistencia QR</h1>
-                <p className="text-xs text-gray-500">Municipalidad de Piura</p>
+                <p className="text-xs text-gray-500">Claro Peru</p>
               </div>
             </div>
             <div className="flex items-center gap-4">

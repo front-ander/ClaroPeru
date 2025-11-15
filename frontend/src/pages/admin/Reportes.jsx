@@ -95,7 +95,7 @@ export const Reportes = () => {
           {/* Resumen */}
           <div className="card">
             <h2 className="text-xl font-bold text-gray-900 mb-4">
-              Resumen de Tardanzas por Practicante
+              Resumen de Tardanzas por Trabajador
             </h2>
             {tardanzas.resumen.length === 0 ? (
               <p className="text-gray-500 text-center py-8">No hay tardanzas registradas</p>
@@ -133,7 +133,7 @@ export const Reportes = () => {
                   <thead>
                     <tr>
                       <th>Fecha</th>
-                      <th>Practicante</th>
+                      <th>Trabajador</th>
                       <th>Código</th>
                       <th>Documento</th>
                       <th>Hora de Entrada</th>
@@ -170,7 +170,7 @@ export const Reportes = () => {
           {/* Resumen */}
           <div className="card">
             <h2 className="text-xl font-bold text-gray-900 mb-4">
-              Resumen de Salidas Tempranas por Practicante
+              Resumen de Salidas Tempranas por Trabajador
             </h2>
             {salidasTempranas.resumen.length === 0 ? (
               <p className="text-gray-500 text-center py-8">
@@ -212,7 +212,7 @@ export const Reportes = () => {
                   <thead>
                     <tr>
                       <th>Fecha</th>
-                      <th>Practicante</th>
+                      <th>Trabajador</th>
                       <th>Código</th>
                       <th>Documento</th>
                       <th>Hora de Salida</th>
