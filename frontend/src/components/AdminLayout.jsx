@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { Chatbot } from './Chatbot';
 import miLogo from '../assets/Claro.ss.jpeg';
 import {
   LayoutDashboard,
@@ -144,6 +145,9 @@ export const AdminLayout = () => {
           <Outlet />
         </main>
       </div>
+
+      {/* Chatbot */}
+      <Chatbot />
     </div>
   );
 };

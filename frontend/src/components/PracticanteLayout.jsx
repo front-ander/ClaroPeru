@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { Chatbot } from './Chatbot';
 import { QrCode, User, History, LogOut, Building2 } from 'lucide-react';
 import miLogo from '../assets/Claro.ss.jpeg';
 
@@ -76,6 +77,9 @@ export const PracticanteLayout = () => {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <Outlet />
       </main>
+
+      {/* Chatbot */}
+      <Chatbot />
     </div>
   );
 };

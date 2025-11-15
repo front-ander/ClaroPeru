@@ -8,6 +8,7 @@ import adminRoutes from './routes/admin.js';
 import practicanteRoutes from './routes/practicante.js';
 import asistenciaRoutes from './routes/asistencia.js';
 import reporteRoutes from './routes/reporte.js';
+import chatbotRoutes from './routes/chatbot.js';
 
 dotenv.config();
 
@@ -25,6 +26,7 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/practicantes', practicanteRoutes);
 app.use('/api/asistencias', asistenciaRoutes);
 app.use('/api/reportes', reporteRoutes);
+app.use('/api/chatbot', chatbotRoutes);
 
 // Ruta de prueba
 app.get('/', (req, res) => {
@@ -36,7 +38,8 @@ app.get('/', (req, res) => {
       admin: '/api/admin',
       practicantes: '/api/practicantes',
       asistencias: '/api/asistencias',
-      reportes: '/api/reportes'
+      reportes: '/api/reportes',
+      chatbot: '/api/chatbot'
     }
   });
 });

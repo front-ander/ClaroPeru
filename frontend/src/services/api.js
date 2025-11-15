@@ -84,4 +84,9 @@ export const reporteAPI = {
   getEstadisticasPracticante: (id) => api.get(`/reportes/practicante/${id}`),
 };
 
+// Chatbot
+export const chatbotAPI = {
+  sendMessage: (data) => api.post('/chatbot/message', data),
+};
+
 export default api;
