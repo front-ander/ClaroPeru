@@ -9,6 +9,12 @@ import practicanteRoutes from './routes/practicante.js';
 import asistenciaRoutes from './routes/asistencia.js';
 import reporteRoutes from './routes/reporte.js';
 import chatbotRoutes from './routes/chatbot.js';
+// Módulos avanzados Claro
+import crmRoutes from './routes/crm.js';
+import redesRoutes from './routes/redes.js';
+import facturacionRoutes from './routes/facturacion.js';
+import analyticsRoutes from './routes/analytics.js';
+import ciberseguridadRoutes from './routes/ciberseguridad.js';
 
 dotenv.config();
 
@@ -27,6 +33,12 @@ app.use('/api/practicantes', practicanteRoutes);
 app.use('/api/asistencias', asistenciaRoutes);
 app.use('/api/reportes', reporteRoutes);
 app.use('/api/chatbot', chatbotRoutes);
+// Módulos avanzados Claro
+app.use('/api/crm', crmRoutes);
+app.use('/api/redes', redesRoutes);
+app.use('/api/facturacion', facturacionRoutes);
+app.use('/api/analytics', analyticsRoutes);
+app.use('/api/ciberseguridad', ciberseguridadRoutes);
 
 // Ruta de prueba
 app.get('/', (req, res) => {
@@ -39,7 +51,12 @@ app.get('/', (req, res) => {
       practicantes: '/api/practicantes',
       asistencias: '/api/asistencias',
       reportes: '/api/reportes',
-      chatbot: '/api/chatbot'
+      chatbot: '/api/chatbot',
+      crm: '/api/crm',
+      redes: '/api/redes',
+      facturacion: '/api/facturacion',
+      analytics: '/api/analytics',
+      ciberseguridad: '/api/ciberseguridad'
     }
   });
 });

@@ -11,6 +11,15 @@ import { Practicantes } from './pages/admin/Practicantes';
 import { Asistencias } from './pages/admin/Asistencias';
 import { Reportes } from './pages/admin/Reportes';
 import { Administradores } from './pages/admin/Administradores';
+// Módulos Claro
+import { Clientes } from './pages/admin/CRM/Clientes';
+import { Contratos } from './pages/admin/CRM/Contratos';
+import { DashboardRedes } from './pages/admin/Redes/DashboardRedes';
+import { Nodos } from './pages/admin/Redes/Nodos';
+import { Facturas } from './pages/admin/Facturacion/Facturas';
+import { DashboardAnalytics } from './pages/admin/Analytics/DashboardAnalytics';
+import { Incidentes } from './pages/admin/Ciberseguridad/Incidentes';
+// Practicante
 import { MiQR } from './pages/practicante/MiQR';
 import { MiPerfil } from './pages/practicante/MiPerfil';
 import { MiHistorial } from './pages/practicante/MiHistorial';
@@ -60,6 +69,14 @@ function App() {
             <Route path="asistencias" element={<Asistencias />} />
             <Route path="reportes" element={<Reportes />} />
             <Route path="administradores" element={<Administradores />} />
+            {/* Módulos Claro */}
+            <Route path="crm/clientes" element={<Clientes />} />
+            <Route path="crm/contratos" element={<Contratos />} />
+            <Route path="redes" element={<DashboardRedes />} />
+            <Route path="redes/nodos" element={<Nodos />} />
+            <Route path="facturacion" element={<Facturas />} />
+            <Route path="analytics" element={<DashboardAnalytics />} />
+            <Route path="ciberseguridad" element={<Incidentes />} />
           </Route>
 
           {/* Rutas de Practicante */}

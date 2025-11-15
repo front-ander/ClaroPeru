@@ -11,7 +11,12 @@ import {
   LogOut,
   Building2,
   Menu,
-  X
+  X,
+  Briefcase,
+  Wifi,
+  FileText,
+  TrendingUp,
+  Shield
 } from 'lucide-react';
 import { useState } from 'react';
 
@@ -25,7 +30,12 @@ export const AdminLayout = () => {
     { name: 'Asistencias', href: '/admin/asistencias', icon: ClipboardList },
     { name: 'Reportes', href: '/admin/reportes', icon: BarChart3 },
     { name: 'Administradores', href: '/admin/administradores', icon: UserCircle },
-
+    // Módulos Claro
+    { name: 'CRM', href: '/admin/crm/clientes', icon: Briefcase },
+    { name: 'Redes', href: '/admin/redes', icon: Wifi },
+    { name: 'Facturación', href: '/admin/facturacion', icon: FileText },
+    { name: 'Analytics', href: '/admin/analytics', icon: TrendingUp },
+    { name: 'Ciberseguridad', href: '/admin/ciberseguridad', icon: Shield },
   ];
 
   return (

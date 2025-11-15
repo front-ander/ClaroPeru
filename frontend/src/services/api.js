@@ -89,4 +89,66 @@ export const chatbotAPI = {
   sendMessage: (data) => api.post('/chatbot/message', data),
 };
 
+// CRM
+export const crmAPI = {
+  // Segmentos y Servicios
+  getSegmentos: () => api.get('/crm/segmentos'),
+  getServicios: (params) => api.get('/crm/servicios', { params }),
+  // Clientes
+  getAllClientes: (params) => api.get('/crm/clientes', { params }),
+  getClienteById: (id) => api.get(`/crm/clientes/${id}`),
+  createCliente: (data) => api.post('/crm/clientes', data),
+  updateCliente: (id, data) => api.put(`/crm/clientes/${id}`, data),
+  // Contratos
+  getAllContratos: (params) => api.get('/crm/contratos', { params }),
+  createContrato: (data) => api.post('/crm/contratos', data),
+  // Tickets
+  getAllTickets: (params) => api.get('/crm/tickets', { params }),
+  createTicket: (data) => api.post('/crm/tickets', data),
+};
+
+// Redes
+export const redesAPI = {
+  getDashboard: () => api.get('/redes/dashboard'),
+  getAllNodos: (params) => api.get('/redes/nodos', { params }),
+  getNodoById: (id) => api.get(`/redes/nodos/${id}`),
+  createNodo: (data) => api.post('/redes/nodos', data),
+  updateNodo: (id, data) => api.put(`/redes/nodos/${id}`, data),
+  getAllAlertas: (params) => api.get('/redes/alertas', { params }),
+  createAlerta: (data) => api.post('/redes/alertas', data),
+  updateAlerta: (id, data) => api.put(`/redes/alertas/${id}`, data),
+  registrarMetrica: (data) => api.post('/redes/metricas', data),
+  getMetricasNodo: (id, params) => api.get(`/redes/nodos/${id}/metricas`, { params }),
+};
+
+// Facturación
+export const facturacionAPI = {
+  getDashboard: (params) => api.get('/facturacion/dashboard', { params }),
+  getAllFacturas: (params) => api.get('/facturacion/facturas', { params }),
+  getFacturaById: (id) => api.get(`/facturacion/facturas/${id}`),
+  createFactura: (data) => api.post('/facturacion/facturas', data),
+  updateFacturaEstado: (id, data) => api.put(`/facturacion/facturas/${id}/estado`, data),
+  registrarPago: (data) => api.post('/facturacion/pagos', data),
+};
+
+// Analytics
+export const analyticsAPI = {
+  getDashboard: (params) => api.get('/analytics/dashboard', { params }),
+  crearPrediccion: (data) => api.post('/analytics/predicciones', data),
+  getPredicciones: (params) => api.get('/analytics/predicciones', { params }),
+  getTendenciasVentas: (params) => api.get('/analytics/tendencias-ventas', { params }),
+  getAnalisisChurn: () => api.get('/analytics/analisis-churn'),
+};
+
+// Ciberseguridad
+export const ciberseguridadAPI = {
+  getDashboard: () => api.get('/ciberseguridad/dashboard'),
+  getAllIncidentes: (params) => api.get('/ciberseguridad/incidentes', { params }),
+  getIncidenteById: (id) => api.get(`/ciberseguridad/incidentes/${id}`),
+  createIncidente: (data) => api.post('/ciberseguridad/incidentes', data),
+  updateIncidente: (id, data) => api.put(`/ciberseguridad/incidentes/${id}`, data),
+  registrarAuditoria: (data) => api.post('/ciberseguridad/auditorias', data),
+  getAuditorias: (params) => api.get('/ciberseguridad/auditorias', { params }),
+};
+
 export default api;
