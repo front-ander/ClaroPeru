@@ -125,7 +125,7 @@ export const Practicantes = () => {
           </div>
           <button onClick={() => setShowModal(true)} className="btn btn-primary flex items-center gap-2">
             <Plus className="w-5 h-5" />
-            Nuevo Practicante
+            Nuevo Trabajador
           </button>
         </div>
       </div>
@@ -214,7 +214,7 @@ export const Practicantes = () => {
             <div className="relative bg-white rounded-lg max-w-2xl w-full p-6">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-2xl font-bold text-gray-900">
-                  {editingId ? 'Editar Practicante' : 'Nuevo Practicante'}
+                  {editingId ? 'Editar Trabajador' : 'Nuevo Trabajador'}
                 </h2>
                 <button onClick={handleCloseModal} className="text-gray-400 hover:text-gray-600">
                   <X className="w-6 h-6" />
