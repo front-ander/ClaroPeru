@@ -1,11 +1,21 @@
 import { useEffect, useState } from 'react';
 import { ciberseguridadAPI } from '../../../services/api';
-import { Shield, AlertTriangle, CheckCircle, Clock, XCircle } from 'lucide-react';
+import { Shield, AlertTriangle, CheckCircle, Clock, XCircle, Plus, X } from 'lucide-react';
 
 export const Incidentes = () => {
   const [incidentes, setIncidentes] = useState([]);
   const [dashboard, setDashboard] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [showModal, setShowModal] = useState(false);
+  const [formData, setFormData] = useState({
+    codigo_incidente: '',
+    tipo_incidente: 'Malware',
+    severidad: 'Media',
+    titulo: '',
+    descripcion: '',
+    origen: '',
+    ip_origen: '',
+  });
 
   useEffect(() => {
     loadData();
@@ -23,6 +33,35 @@ export const Incidentes = () => {
       console.error('Error al cargar datos:', error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await ciberseguridadAPI.createIncidente(formData);
+      setShowModal(false);
+      setFormData({
+        codigo_incidente: '',
+        tipo_incidente: 'Malware',
+        severidad: 'Media',
+        titulo: '',
+        descripcion: '',
+        origen: '',
+        ip_origen: '',
+      });
+      loadData(); // Recargar datos
+    } catch (error) {
+      console.error('Error al crear incidente:', error);
+      alert('Error al crear el incidente');
     }
   };
 
@@ -65,9 +104,18 @@ export const Incidentes = () => {
 
   return (
     <div>
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900">Ciberseguridad</h1>
-        <p className="text-gray-600 mt-2">Gestión de incidentes y auditorías de seguridad</p>
+      <div className="mb-8 flex justify-between items-center">
+        <div>
+          <h1 className="text-3xl font-bold text-gray-900">Ciberseguridad</h1>
+          <p className="text-gray-600 mt-2">Gestión de incidentes y auditorías de seguridad</p>
+        </div>
+        <button
+          onClick={() => setShowModal(true)}
+          className="btn btn-primary flex items-center gap-2"
+        >
+          <Plus className="w-4 h-4" />
+          Nuevo Incidente
+        </button>
       </div>
 
       {/* Dashboard */}
@@ -203,6 +251,150 @@ export const Incidentes = () => {
           </div>
         )}
       </div>
+
+      {/* Modal Nuevo Incidente */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div className="flex justify-between items-center p-6 border-b">
+              <h2 className="text-xl font-bold text-gray-900">Registrar Nuevo Incidente</h2>
+              <button
+                onClick={() => setShowModal(false)}
+                className="text-gray-400 hover:text-gray-500"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            <form onSubmit={handleSubmit} className="p-6 space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Código de Incidente
+                  </label>
+                  <input
+                    type="text"
+                    name="codigo_incidente"
+                    required
+                    value={formData.codigo_incidente}
+                    onChange={handleInputChange}
+                    placeholder="Ej: INC-2024-001"
+                    className="input"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Tipo de Incidente
+                  </label>
+                  <select
+                    name="tipo_incidente"
+                    required
+                    value={formData.tipo_incidente}
+                    onChange={handleInputChange}
+                    className="input"
+                  >
+                    <option value="Malware">Malware</option>
+                    <option value="Phishing">Phishing</option>
+                    <option value="DDoS">DDoS</option>
+                    <option value="Intrusión">Intrusión</option>
+                    <option value="Otro">Otro</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Severidad
+                  </label>
+                  <select
+                    name="severidad"
+                    required
+                    value={formData.severidad}
+                    onChange={handleInputChange}
+                    className="input"
+                  >
+                    <option value="Baja">Baja</option>
+                    <option value="Media">Media</option>
+                    <option value="Alta">Alta</option>
+                    <option value="Crítica">Crítica</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Origen / Fuente
+                  </label>
+                  <input
+                    type="text"
+                    name="origen"
+                    value={formData.origen}
+                    onChange={handleInputChange}
+                    placeholder="Ej: Firewall, Antivirus"
+                    className="input"
+                  />
+                </div>
+
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Título
+                  </label>
+                  <input
+                    type="text"
+                    name="titulo"
+                    required
+                    value={formData.titulo}
+                    onChange={handleInputChange}
+                    placeholder="Resumen breve del incidente"
+                    className="input"
+                  />
+                </div>
+
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Descripción Detallada
+                  </label>
+                  <textarea
+                    name="descripcion"
+                    required
+                    value={formData.descripcion}
+                    onChange={handleInputChange}
+                    rows="4"
+                    placeholder="Detalles completos del incidente..."
+                    className="input"
+                  ></textarea>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    IP de Origen (Opcional)
+                  </label>
+                  <input
+                    type="text"
+                    name="ip_origen"
+                    value={formData.ip_origen}
+                    onChange={handleInputChange}
+                    placeholder="Ej: 192.168.1.100"
+                    className="input"
+                  />
+                </div>
+              </div>
+
+              <div className="flex justify-end gap-3 pt-4 border-t">
+                <button
+                  type="button"
+                  onClick={() => setShowModal(false)}
+                  className="btn btn-secondary"
+                >
+                  Cancelar
+                </button>
+                <button type="submit" className="btn btn-primary">
+                  Registrar Incidente
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
