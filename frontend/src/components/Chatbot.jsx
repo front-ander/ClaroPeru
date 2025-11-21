@@ -84,6 +84,11 @@ export const Chatbot = () => {
       reportes: '¿Cómo generar reportes?',
       qr: '¿Cómo funciona el código QR?',
       asistencias: '¿Cómo registrar asistencias?',
+      crm: '¿Qué puedo hacer en el CRM?',
+      redes: '¿Cómo funciona el módulo de Redes?',
+      facturacion: '¿Cómo uso la Facturación?',
+      analytics: '¿Qué me muestra Analytics?',
+      ciberseguridad: '¿Cómo gestiono la Ciberseguridad?',
     };
 
     setInputMessage(quickMessages[action] || action);
@@ -93,13 +98,19 @@ export const Chatbot = () => {
   };
 
   const quickActions = [
-    { id: 'ayuda', label: 'Ayuda General', icon: '❓' },
-    { id: 'qr', label: 'Código QR', icon: '📱' },
+    { id: 'ayuda', label: 'Ayuda', icon: '❓' },
+    { id: 'qr', label: 'QR', icon: '📱' },
     { id: 'asistencias', label: 'Asistencias', icon: '📋' },
   ];
 
   if (user?.rol === 'admin') {
-    quickActions.push({ id: 'reportes', label: 'Reportes', icon: '📊' });
+    quickActions.push(
+      { id: 'crm', label: 'CRM', icon: '👥' },
+      { id: 'redes', label: 'Redes', icon: '📡' },
+      { id: 'facturacion', label: 'Facturación', icon: '💰' },
+      { id: 'analytics', label: 'Analytics', icon: '📊' },
+      { id: 'ciberseguridad', label: 'Seguridad', icon: '🛡️' }
+    );
   }
 
   return (
@@ -144,9 +155,8 @@ export const Chatbot = () => {
             {messages.map((message) => (
               <div
                 key={message.id}
-                className={`flex gap-3 ${
-                  message.type === 'user' ? 'justify-end' : 'justify-start'
-                }`}
+                className={`flex gap-3 ${message.type === 'user' ? 'justify-end' : 'justify-start'
+                  }`}
               >
                 {message.type === 'bot' && (
                   <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
@@ -154,17 +164,15 @@ export const Chatbot = () => {
                   </div>
                 )}
                 <div
-                  className={`max-w-[75%] rounded-lg px-4 py-2 ${
-                    message.type === 'user'
+                  className={`max-w-[75%] rounded-lg px-4 py-2 ${message.type === 'user'
                       ? 'bg-blue-600 text-white'
                       : 'bg-white text-gray-900 border border-gray-200'
-                  }`}
+                    }`}
                 >
                   <p className="text-sm whitespace-pre-wrap">{message.text}</p>
                   <p
-                    className={`text-xs mt-1 ${
-                      message.type === 'user' ? 'text-blue-100' : 'text-gray-500'
-                    }`}
+                    className={`text-xs mt-1 ${message.type === 'user' ? 'text-blue-100' : 'text-gray-500'
+                      }`}
                   >
                     {message.timestamp.toLocaleTimeString('es-PE', {
                       hour: '2-digit',
@@ -246,4 +254,3 @@ export const Chatbot = () => {
     </>
   );
 };
-
